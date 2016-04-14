@@ -1,0 +1,5 @@
+name: puppet
+summary: Latest stable puppet & hiera binaries for trusty
+description: |
+  Layer delivers latest stable puppet and hiera (1.3.4) packages for trusty
+  fixing YAML parsing bugs in hiera
