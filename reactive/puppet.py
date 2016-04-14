@@ -21,7 +21,7 @@ config = hookenv.config()
 kv = unitdata.kv()
 
 
-@when_not('puppet.available')
+@when_not('apt.installed.puppet', 'puppet.available')
 def install_puppet():
     """ Installs latest Puppet & hiera packages
 
@@ -37,8 +37,10 @@ def install_puppet():
         # Ideally the sources should be taken from config.yaml but I can not make it work
         wget = 'wget -O /tmp/puppetlabs-release-trusty.deb https://apt.puppetlabs.com/puppetlabs-release-trusty.deb'
         dpkg = 'dpkg -i /tmp/puppetlabs-release-trusty.deb'
+        apt_update = 'apt-get update'
         subprocess.call(wget.split())
         subprocess.call(dpkg.split())
+        subprocess.call(apt_update.split())
     except CalledProcessError:
         pass  # All modules are set
 
@@ -46,6 +48,7 @@ def install_puppet():
     kv.set('puppet.key', config.get('install_keys'))
 
     apt.queue_install(['puppet'])
+    apt.install_queued()
 
 
 @when('apt.installed.puppet')
