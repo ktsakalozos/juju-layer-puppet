@@ -37,8 +37,6 @@ def install_puppet():
         # Ideally the sources should be taken from config.yaml but I can not make it work
         wget = 'wget -O /tmp/puppetlabs-release-trusty.deb https://apt.puppetlabs.com/puppetlabs-release-trusty.deb'
         dpkg = 'dpkg -i /tmp/puppetlabs-release-trusty.deb'
-        apt_update = 'apt-get update'
-        puppet_install = 'apt-get install --yes puppet'
         subprocess.call(wget.split())
         subprocess.call(dpkg.split())
     except CalledProcessError:
@@ -52,7 +50,7 @@ def install_puppet():
 
 @when('apt.installed.puppet')
 @when_not('puppet.available')
-def puppet_id_set():
+def puppet_is_set():
     hookenv.status_set('active', 'Puppet is installed')
     set_state('puppet.available')
 
