@@ -1,7 +1,9 @@
 options:
-  install_sources: |
-    - http://apt.puppetlabs.com trusty main
-    - http://apt.puppetlabs.com trusty dependencies
-  install_keys: |
+  install_sources:
+    default: |
+      - 'http://apt.puppetlabs.com trusty main'
+      - 'http://apt.puppetlabs.com trusty dependencies'
+  install_keys:
+    default: |
       - '4BD6EC30'
       - '4BD6EC30'
