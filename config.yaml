@@ -1,7 +1,14 @@
 options:
-  install_sources: |
-    - http://apt.puppetlabs.com trusty main
-    - http://apt.puppetlabs.com trusty dependencies
-  install_keys: |
-      - '4BD6EC30'
-      - '4BD6EC30'
+  install_sources:
+    default: ''
+    type: string
+    description: >
+      By default, layer-puppet installs Puppet packages from the Ubuntu archive.
+      Set this option to override the installation repository. See the
+      layer-apt README for more details.
+  install_keys:
+    default: ''
+    type: string
+    description: >
+      Signing keys (if needed) for repostories configured by the
+      'install_sources' option above. See the layer-apt README for more details.

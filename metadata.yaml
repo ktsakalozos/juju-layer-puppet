@@ -1,5 +1,6 @@
 name: puppet
-summary: Latest stable puppet & hiera binaries for trusty
+summary: Installs puppet
 description: |
-  Layer delivers latest stable puppet and hiera (1.3.4) packages for trusty
-  fixing YAML parsing bugs in hiera
+  Installs stable Puppet packages from the archive. On Trusty, updated puppet
+  packages that fix YAML parsing bugs are installed from the puppetlabs trusty
+  repository.
