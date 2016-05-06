@@ -1,11 +1,12 @@
 from charms.reactive import (
     set_state,
-    remove_state,
     is_state,
     when_not,
     when,
     when_any,
 )
+# NB: lint fix as long as version_fix is a noop
+# from charms.reactive import remove_state
 from charms import apt
 import platform
 
