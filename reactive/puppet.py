@@ -23,10 +23,10 @@ def install_puppet():
     if series == 'trusty' and is_state('config.default.install_sources'):
         # BIGTOP-2003. A workaround to install newer hiera to get rid of
         # hiera 1.3.0 bug.
-        apt.add_source('http://apt.puppetlabs.com trusty main',
+        apt.add_source('deb http://apt.puppetlabs.com trusty main dependencies',
                        '4BD6EC30')
-        apt.add_source('http://apt.puppetlabs.com trusty dependencies',
-                       '4BD6EC30')
+
+        apt.update()
 
     apt.queue_install(['puppet'])
     apt.install_queued()
@@ -50,5 +50,7 @@ def version_check():
     remove `puppet.available`.  Then `install_puppet()` will run again with
     the new config.
     """
-    apt.purge(['puppet'])
-    remove_state('puppet.available')
+    # NB: uncomment when this is fixed:
+    # https://github.com/juju-solutions/layer-basic/pull/61
+    # apt.purge(['puppet'])
+    # remove_state('puppet.available')
